@@ -1,4 +1,4 @@
-work_experience = int(input("Enter your full work experience in years: "))
+work_experience = float(input("Enter your full work experience in years: "))
 
 if work_experience > 1 and work_experience <= 5:
     developer_type = "Middle"
