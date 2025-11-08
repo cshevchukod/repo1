@@ -160,6 +160,13 @@ print(eastern_time)
 
 print('')
 
+utc_time = datetime.now(timezone.utc)
+
+# Створення часової зони для Східного часового поясу (UTC-5)
+eastern_time = utc_time.astimezone(timezone(timedelta(hours=-5)))
+# Перетворює час UTC в час Східного часового поясу
+print(eastern_time)  
+
 # Припустимо, місцевий час належить до часової зони UTC+2
 local_timezone = timezone(timedelta(hours=2))
 local_time = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=local_timezone)
@@ -167,3 +174,112 @@ local_time = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, 
 # Конвертація локального часу в UTC
 utc_time = local_time.astimezone(timezone.utc)
 print(utc_time)  # Виведе час в UTC
+print(local_timezone)
+print(local_time)
+
+iso_format_with_timezone = local_time.isoformat()
+print(iso_format_with_timezone)
+
+print('')
+
+import time
+
+# Записуємо час на початку виконання
+start_time = time.perf_counter()
+
+print("Початок паузи")
+time.sleep(1)
+print("Кінець паузи")
+
+current_time = time.time()
+print(f"Поточний час: {current_time}")
+
+# Створюємо читабельний час через time
+readable_time = time.ctime(current_time)
+print(readable_time)
+
+# Створюємо datetime з того самого timestamp
+current_datetime = datetime.fromtimestamp(current_time)
+print (current_datetime)
+
+t = time.time()
+print(time.ctime(t))
+print(datetime.fromtimestamp(t))
+
+current_datetime = datetime.now()
+timestamp = current_datetime.timestamp()
+
+print(current_datetime)
+print(time.ctime(timestamp))
+
+print('')
+
+# 1️⃣ Отримуємо поточний timestamp (унікальний момент часу)
+t = time.time()
+
+# 2️⃣ Форматуємо через модуль time
+formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t))
+
+# 3️⃣ Форматуємо через datetime (з того ж timestamp)
+formatted_datetime = datetime.fromtimestamp(t).strftime("%Y-%m-%d %H:%M:%S")
+
+# 4️⃣ Виводимо обидва результати
+print("time.strftime():     ", formatted_time)
+print("datetime.strftime(): ", formatted_datetime)
+
+print('')
+
+# Виконуємо якусь операцію
+for _ in range(1_000_000):
+    pass  # Просто проходить цикл мільйон разів
+
+# Записуємо час після виконання операції
+end_time = time.perf_counter()
+
+# Розраховуємо та виводимо час виконання
+execution_time = end_time - start_time
+print(f"Час виконання: {execution_time} секунд")
+
+print('')
+
+import random
+
+dice_roll = random.randint(1, 6)
+print(f"Ви кинули {dice_roll}")
+cards = ["Туз", "Король", "Дама", "Валет", "10", "9", "8", "7", "6"]
+
+random.shuffle(cards)
+
+print(f"Перемішана колода: {cards}")
+
+fruits = ['apple', 'banana', 'orange']
+print(random.choice(fruits))
+
+print('')
+
+items = ['яблуко', 'банан', 'вишня', 'диня']
+chosen_item = random.choices(items, k=1)
+print(chosen_item) 
+
+numbers = [1, 2, 3, 4, 5]
+chosen_numbers = random.choices(numbers, k=3)
+print(chosen_numbers)
+
+colors = ['червоний', 'зелений', 'синій']
+weights = [5, 10, 1]
+chosen_color = random.choices(colors, weights, k=1)
+print(chosen_color)
+
+print('')
+
+import math
+
+# Вихідне число
+x = 3.78
+
+# Використання різних методів округлення
+ceil_result = math.ceil(x)  # Округлення вгору
+floor_result = math.floor(x)  # Округлення вниз
+trunc_result = math.trunc(x)  # Відсікання дробової частини
+
+print(ceil_result, floor_result, trunc_result)
