@@ -1,285 +1,153 @@
-from datetime import datetime
 
-current_datetime_1 = datetime.now()
-print(current_datetime_1.year)
-print(current_datetime_1.month)
-print(current_datetime_1.day)
-print(current_datetime_1.hour)
-print(current_datetime_1.minute)
-print(current_datetime_1.second)
-print(current_datetime_1.microsecond)
-print(current_datetime_1.tzinfo)
+this_is_string = "Hi there!"
 
-print('')
+the_same_string = 'Hi there!'
 
-current_datetime_2 = datetime.now()
-print(current_datetime_2.date())
-print(current_datetime_2.time())
+this_is_string == the_same_string # True
 
-print('')
+text = """This is first line
+And second line
+Last third line"""
 
-seventh_day_2019 = datetime(year=2019, month=1, day=7, hour=14)
-seventh_day_2020 = datetime(year=2020, month=1, day=7, hour=14)
+song = '''Jingle bells, jingle bells
+Jingle all the way
+Oh, what fun it is to ride
+In a one horse open sleigh'''
 
-difference = seventh_day_2020 - seventh_day_2019
-print(difference)  # 365 days, 0:00:00
-print(difference.total_seconds())  # 31536000.0
+print(this_is_string, the_same_string, text, song, end=", \n")
+
+one_line_text = "Textual data in Python is handled with str objects," \
+                " or strings. Strings are immutable sequences of Unicode" \
+                " code points. String literals are written in a variety " \
+                " of ways: single quotes, double quotes, triple quoted."
+print(one_line_text)
 
 print('')
 
-from datetime import timedelta
+text = "hello world"
+result = text.split()
+print(result)  # Виведе: ['hello', 'world']
+print(text)
 
-delta = timedelta(
-    days=50,
-    seconds=27,
-    microseconds=10,
-    milliseconds=29000,
-    minutes=5,
-    hours=8,
-    weeks=2
-)
-print(delta)
+text = "apple,banana,cherry"
+result = text.split(',')
+print(result)  # Виведе: ['apple', 'banana', 'cherry']
+print(text)
 
-print('')
+list_of_strings = ['Hello', 'world']
+result = ' '.join(list_of_strings) + "!"
+print(result)  # Виведе: 'Hello world'
 
-import datetime
+elements = ['earth', 'air', 'fire', 'water']
+result = ', '.join(elements)
+print(result)  # Виведе: 'earth, air, fire, water'
 
-# Створення об'єкта datetime з конкретною датою і часом
-specific_datetime = datetime.datetime(year=2020, month=1, day=7, hour=14, minute=30, second=15)
+clean = ' ,  spacious  , '.strip()
+print(clean) # spacious
 
-print(specific_datetime)  # Виведе "2020-01-07 14:30:15"
+text = "Hello world"
+new_text = text.replace("world", "Python")
+print(new_text)
 
-print('')
-
-from datetime import datetime, timedelta, timezone
-
-seventh_day_2020 = datetime(year=2020, month=1, day=7, hour=14)
-four_weeks_interval = timedelta(weeks=4)
-
-print(seventh_day_2020)
-print(seventh_day_2020 + four_weeks_interval)  # 2020-02-04 14:00:00
-print(seventh_day_2020 - four_weeks_interval)  # 2019-12-10 14:00:00
+text = "one fish, two fish, red fish, blue fish"
+new_text = text.replace("fish", "bird", 2)
+print(new_text)
 
 print('')
 
-# Створення об'єкта datetime
-date = datetime(year=2023, month=12, day=18)
+test_hook = 'TestHook'
 
-# Отримання порядкового номера
-ordinal_number = date.toordinal()
-print(f"Порядковий номер дати {date} становить {ordinal_number}")
-
-print('')
-
-# Встановлення дати спалення Москви Наполеоном (14 вересня 1812 року)
-napoleon_burns_moscow = datetime(year=1812, month=9, day=14)
-
-# Поточна дата
-current_date = datetime.now()
-
-# Розрахунок кількості днів
-days_since = current_date.toordinal() - napoleon_burns_moscow.toordinal()
-print(days_since)
+print(test_hook.removeprefix('Test')) # Hook
+print(test_hook.removeprefix('Hook')) # TestHook
+print(test_hook.removesuffix('Test')) # TestHook
+print(test_hook.removesuffix('Hook')) # Test
 
 print('')
 
-now = datetime.now()
+url_search = "<https://www.google.com/search?q=Cat+and+dog&ie=utf-8&oe=utf-8&aq=t>"
+_, query = url_search.split('?')
+print(query)
 
-# Конвертація datetime в timestamp
-timestamp = datetime.timestamp(now)
-print(timestamp)  # Виведе timestamp поточного часу
-
-print('')
-
-now = datetime.now()
-
-# Форматування дати і часу
-formatted_date = now.strftime("%Y-%m-%d %H:%M:%S")
-print(formatted_date) 
-
-# Форматування лише дати
-formatted_date_only = now.strftime("%A, %d %B %Y")
-print(formatted_date_only)
-
-# Форматування лише часу
-formatted_time_only = now.strftime("%I:%M %p")
-print(formatted_time_only)  
-
-# Форматування лише дати
-formatted_date_only = now.strftime("%d.%m.%Y")
-print(formatted_date_only)
+obj_query = {}
+for el in query.split('&'):
+    print(el)
+    key, value = el.split('=')
+    obj_query.update({key: value.replace('+', ' ')})
+print(obj_query)
 
 print('')
 
-# Поточна дата та час
-now = datetime.now()
+number = "12345"
+print(number.isdigit())  # Виведе: True
 
-# Конвертація у формат ISO 8601
-iso_format = now.isoformat()
-print(iso_format)
-print(now)
+text = "Number123"
+print(text.isdigit())  # Виведе: False
 
-print('')
-
-iso_date_string = "2023-03-14T12:39:29.992996"
-
-# Конвертація з ISO формату
-date_from_iso = datetime.fromisoformat(iso_date_string)
-print(date_from_iso)
+for char in "Hello 123":
+    if char.isdigit():
+        print(f"'{char}' - цифра")
+    else:
+        print(f"'{char}' - не цифра")
 
 print('')
 
-# Створення об'єкта datetime
-now = datetime.now()
-
-# Отримання ISO календаря
-iso_calendar = now.isocalendar()
-
-print(f"ISO рік: {iso_calendar[0]}, ISO тиждень: {iso_calendar[1]}, ISO день тижня: {iso_calendar[2]}")
-print(iso_calendar)
-
-iso_calendar_1 = now.isoweekday()
-print(f"Сьогодні: {iso_calendar_1}")
-
-# Створення об'єкта datetime
-now = datetime.now()
-
-# Використання isoweekday() для отримання дня тижня
-day_of_week = now.isoweekday()
-
-print(f"Сьогодні: {day_of_week}")  # Поверне число від 1 до 7, що відповідає дню тижня
-
+intab = "aeiou"
+outtab = "12345"
+trantab = str.maketrans(intab, outtab)
+print(trantab)
+print('')
+print('')
 print('')
 
-utc_time = datetime.now(timezone.utc)
-
-# Створення часової зони для Східного часового поясу (UTC-5)
-eastern_time = utc_time.astimezone(timezone(timedelta(hours=-5)))
-# Перетворює час UTC в час Східного часового поясу
-print(eastern_time)
-
-print('')
-
-utc_time = datetime.now(timezone.utc)
-
-# Створення часової зони для Східного часового поясу (UTC-5)
-eastern_time = utc_time.astimezone(timezone(timedelta(hours=-5)))
-# Перетворює час UTC в час Східного часового поясу
-print(eastern_time)  
-
-# Припустимо, місцевий час належить до часової зони UTC+2
-local_timezone = timezone(timedelta(hours=2))
-local_time = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=local_timezone)
-
-# Конвертація локального часу в UTC
-utc_time = local_time.astimezone(timezone.utc)
-print(utc_time)  # Виведе час в UTC
-print(local_timezone)
-print(local_time)
-
-iso_format_with_timezone = local_time.isoformat()
-print(iso_format_with_timezone)
-
-print('')
-
-import time
-
-# Записуємо час на початку виконання
-start_time = time.perf_counter()
-
-print("Початок паузи")
-time.sleep(1)
-print("Кінець паузи")
-
-current_time = time.time()
-print(f"Поточний час: {current_time}")
-
-# Створюємо читабельний час через time
-readable_time = time.ctime(current_time)
-print(readable_time)
-
-# Створюємо datetime з того самого timestamp
-current_datetime = datetime.fromtimestamp(current_time)
-print (current_datetime)
-
-t = time.time()
-print(time.ctime(t))
-print(datetime.fromtimestamp(t))
-
-current_datetime = datetime.now()
-timestamp = current_datetime.timestamp()
-
-print(current_datetime)
-print(time.ctime(timestamp))
-
-print('')
-
-# 1️⃣ Отримуємо поточний timestamp (унікальний момент часу)
-t = time.time()
-
-# 2️⃣ Форматуємо через модуль time
-formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t))
-
-# 3️⃣ Форматуємо через datetime (з того ж timestamp)
-formatted_datetime = datetime.fromtimestamp(t).strftime("%Y-%m-%d %H:%M:%S")
-
-# 4️⃣ Виводимо обидва результати
-print("time.strftime():     ", formatted_time)
-print("datetime.strftime(): ", formatted_datetime)
-
-print('')
-
-# Виконуємо якусь операцію
-for _ in range(1_000_000):
-    pass  # Просто проходить цикл мільйон разів
-
-# Записуємо час після виконання операції
-end_time = time.perf_counter()
-
-# Розраховуємо та виводимо час виконання
-execution_time = end_time - start_time
-print(f"Час виконання: {execution_time} секунд")
-
-print('')
+str = "This is string example"
+print(str.translate(trantab))
 
 import random
 
-dice_roll = random.randint(1, 6)
-print(f"Ви кинули {dice_roll}")
-cards = ["Туз", "Король", "Дама", "Валет", "10", "9", "8", "7", "6"]
+# Глобальний генератор
+print("global:", random.random())  
 
-random.shuffle(cards)
-
-print(f"Перемішана колода: {cards}")
-
-fruits = ['apple', 'banana', 'orange']
-print(random.choice(fruits))
+# Локальний із seed
+rng = random.Random(42)
+print("rng:", rng.random())
+print("rng:", rng.random())
+print(rng)
 
 print('')
 
-items = ['яблуко', 'банан', 'вишня', 'диня']
-chosen_item = random.choices(items, k=1)
-print(chosen_item) 
+symbols = "0123456789ABCDEF"
+code = [
+        '0000', '0001', '0010', '0011', '0100', '0101', '0110', '0111',
+        '1000', '1001', '1010', '1011', '1100', '1101', '1110', '1111'
+        ]
 
-numbers = [1, 2, 3, 4, 5]
-chosen_numbers = random.choices(numbers, k=3)
-print(chosen_numbers)
+MAP = {}
 
-colors = ['червоний', 'зелений', 'синій']
-weights = [5, 10, 1]
-chosen_color = random.choices(colors, weights, k=1)
-print(chosen_color)
+for s, c in zip(symbols, code):
+    MAP[ord(s)] = c
+    MAP[ord(s.lower())] = c
+
+print(MAP)
+result = "34 DF 56 AC".translate(MAP)
+print(result)
+
+MAP = {ord('A'): '1', ord('a'): '2'}
+
+print("Aa".translate(MAP))
+
+s = "education"
+
+auto = str.maketrans("aeiou", "12345")
+manual = {97: "1", 101: "2", 105: "3", 111: "4", 117: "5"}
+
+print(s.translate(auto))   # 2d5c1t34n
+print(s.translate(manual)) # 2d5c1t34n
 
 print('')
 
-import math
+for i in range(20):
+    s = f"int: {i:d};  hex: {i:#x};  oct: {i:#o};  bin: {i:#b}"
+    print(s)
 
-# Вихідне число
-x = 3.78
-
-# Використання різних методів округлення
-ceil_result = math.ceil(x)  # Округлення вгору
-floor_result = math.floor(x)  # Округлення вниз
-trunc_result = math.trunc(x)  # Відсікання дробової частини
-
-print(ceil_result, floor_result, trunc_result)
+value = 0.123
+print (f"{value:%}")
