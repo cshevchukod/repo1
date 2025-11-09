@@ -151,3 +151,58 @@ for i in range(20):
 
 value = 0.123
 print (f"{value:%}")
+
+print('')
+
+import re
+
+text = "Вивчення Python може бути веселим."
+pattern = "Python"
+match = re.search(pattern, text)
+
+if match:
+    print("Знайдено:", match.group())
+else:
+    print("Не знайдено.")
+
+text = "Вивчення Python може бути веселим."
+pattern = r"в\w*м"
+match = re.search(pattern, text, re.IGNORECASE)
+
+if match:
+    print("Знайдено:", match.group())
+
+print('')
+
+email = "username@domain.com"
+pattern = r"(\w+)@(\w+\.\w+)"
+match = re.search(pattern, email)
+
+if match:
+    user_name = match.group(1)
+    domain_name = match.group(2)
+    print("Ім'я користувача:", user_name)
+    print("Домен:", domain_name)
+
+print('')
+
+phone = """Михайло Куліш: 050-171-1634
+Вікторія Кущ: 063-134-1729
+Оксана Гавриленко: 068-234-5612"""
+pattern = r"(\d{3})-(\d{3})-(\d{4})"
+replacement = r"(\1) \2-\3"
+formatted_phone = re.sub(pattern, replacement, phone)
+
+print(formatted_phone)
+
+text = "Вивчення Python може бути веселим."
+pattern = "Python"
+match = re.search(pattern, text)
+
+if match:
+    print("Знайдено:", match.span())
+    print("Знайдено:", match.string)
+    print("Знайдено:", match.group())
+    print("Знайдено:", match)
+else:
+    print("Не знайдено.")
