@@ -47,4 +47,4 @@ print(byte_array)
 
 print('')
 
-python echo.py test --user -hello
+
