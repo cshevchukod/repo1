@@ -1,65 +1,17 @@
-fh = open('test.txt', 'w')
-fh.write('first line\nsecond line\nthird line')
-fh.close()
+from collections import defaultdict
 
-fh = open('test.txt', 'r')
-while True:
-    line = fh.readline()
-    if not line:
-        break
-    print(line)
-
-fh.close()
-
-with open("test1.txt", "w") as fh:
-    fh.write("first line\nsecond line\nthird line")
-
-with open("test1.txt", "r") as fh:
-    lines = []
-    for el in fh.readlines():
-        lines.append(el.strip())
-
-print(lines)
-
-# Перетворення списку чисел у байт-рядок
-numbers = [0, 128, 255]
-byte_numbers = bytes(numbers)
-print(byte_numbers)  # Виведе байтове представлення чисел
-
-s = "Привіт!"
-
-utf8 = s.encode()
-print(f"UTF-8: {utf8}")
-
-utf16 = s.encode("utf-16")
-print(f"UTF-16: {utf16}")
-
-cp1251 = s.encode("cp1251")
-print(f"CP-1251: {cp1251}")
-
-s_from_utf16 = utf16.decode("utf-16")
-print(s_from_utf16 == s)
-
-byte_array = bytearray(b'Kill Bill')
-byte_array[0] = ord('B')
-byte_array[5] = ord('K')
-print(byte_array)
-
-print('')
-
-from joke import get_random_joke
 
 def main():
-    name = input("Будь ласка, введіть ваше ім'я: ")
-    print(f"Привіт, {name}!")
+    print("Started!")
+    
+    words = ['apple', 'zoo', 'lion', 'lama', 'bear', 'bet', 'wolf', 'appendix']
+    grouped_words = defaultdict(list)
 
-    while True:
-        user_response = input(f"{name}, бажаєте почути анекдот? (так/ні): ").lower()
-        if user_response == "так":
-            print(get_random_joke())
-        elif user_response == "ні":
-            print(f"До побачення, {name}!")
-            break
+    for word in words:
+        char = word[0]
+        grouped_words[char].append(word)
+
+    print(dict(grouped_words))
 
 if __name__ == "__main__":
     main()
